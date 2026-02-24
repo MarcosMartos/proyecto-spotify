@@ -1,48 +1,72 @@
-# proyecto-spotify
+# 🎧 Spotify Data Analysis Project
 
-🎧 Spotify Data Analysis with Pandas
-Este proyecto consiste en un pipeline de análisis de datos para procesar el historial de reproducción extendido de Spotify. Utiliza Python para limpiar, transformar y visualizar hábitos musicales a través de diversas métricas temporales y de popularidad.
+Este proyecto personal utiliza la librería **Pandas** para procesar y analizar el historial de reproducción extendido de Spotify. El objetivo es transformar datos crudos en formato JSON en visualizaciones comprensibles sobre hábitos musicales.
 
-🚀 Características
-ETL (Extract, Transform, Load): Carga de datos directamente desde archivos JSON de Spotify.
+---
 
-Limpieza de Datos: Eliminación de registros incompletos y renombrado de columnas para mejorar la legibilidad.
+## 🚀 Funcionalidades
+El script realiza un proceso completo de análisis de datos:
+1.  **Extracción**: Carga de archivos JSON nativos de Spotify.
+2.  **Limpieza**: Filtrado de columnas innecesarias y eliminación de registros nulos (anuncios o tracks sin nombre).
+3.  **Transformación**: 
+    * Renombrado de campos técnicos a nombres amigables.
+    * Conversión de *timestamps* a objetos `datetime`.
+    * Creación de nuevas dimensiones: Año, Mes, Día de la Semana y Hora.
+4.  **Visualización**: Generación de gráficos estadísticos con **Seaborn** y **Matplotlib**.
 
-Feature Engineering: Extracción de componentes temporales (Año, Mes, Día de la semana, Hora) a partir de Timestamps ISO 8601.
+---
 
-Visualización Estadística: \* Top 10 de artistas más escuchados.
+## 🛠️ Stack Tecnológico
+* **Lenguaje:** Python 3.x
+* **Librerías principales:**
+    * `pandas`: Para la manipulación de DataFrames.
+    * `matplotlib.pyplot`: Para la estructura de los gráficos.
+    * `seaborn`: Para el diseño y estilo visual de los datos.
 
-Distribución horaria de consumo musical.
+---
 
-Tendencias de actividad por mes.
+## 📊 Visualizaciones Incluidas
+El proyecto genera automáticamente tres métricas visuales:
+* **Top 10 Artistas:** Gráfico de barras horizontales con paleta *mako*.
+* **Distribución Horaria:** Histograma con curva KDE para identificar picos de escucha durante el día.
+* **Actividad Mensual:** Comparativa de consumo musical a lo largo de los meses del año.
 
-🛠️ Tecnologías utilizadas
-Python 3.x
+---
 
-Pandas: Manipulación y limpieza de estructuras de datos.
+## 📁 Estructura de Archivos
+Para que el script funcione correctamente, la estructura debe ser la siguiente:
+```text
+.
+├── data/
+│   └── Streaming_History_Audio_2022-2026_0.json  # Datos de entrada
+├── spotify_analysis.py                            # Script de Python
+└── README.md                                      # Documentación
+```
 
-Matplotlib: Creación de la base de las figuras.
+## ⚙️ Instalación y Uso
+Clona este repositorio o descarga el script.
 
-Seaborn: Visualizaciones estadísticas de alta densidad estética.
+Instala las dependencias necesarias:
 
-📋 Requisitos previos
-Para ejecutar este script, asegúrate de tener instaladas las siguientes librerías:
-
+```text
 Bash
 pip install pandas matplotlib seaborn
-📁 Estructura del Proyecto
-Plaintext
-├── data/
-│ └── Streaming_History_Audio_2022-2026_0.json # Tu historial de Spotify
-├── main.py # Script principal de análisis
-└── README.md # Documentación del proyecto
-📊 Visualizaciones Generadas
-El script genera automáticamente tres visualizaciones clave:
+```
+Ejecuta el análisis:
 
-Top 10 Artistas: Un gráfico de barras que identifica a los artistas con mayor frecuencia de reproducción.
 
-Distribución Horaria: Un histograma con estimación de densidad (KDE) que muestra en qué momentos del día eres más activo.
+```text
+bash
+python prueba.ipynb
+```
 
-Actividad Mensual: Un análisis de barras que revela la evolución de tu consumo a lo largo del año calendario.
+## 📝 Notas de Implementación
+Se utiliza un bloque try-except para capturar errores de carga de archivos o de formato.
 
-Desarrollado por Marcos - Estudiante de Ingeniería en Sistemas
+Se aplica el método de Method Chaining para optimizar la selección y renombrado de columnas.
+
+El análisis de meses está ordenado cronológicamente para evitar desorden alfabético en el eje X.
+
+Autor: Marcos
+
+Estudiante de Ingeniería en Sistemas
